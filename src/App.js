@@ -16,6 +16,10 @@ function App() {
         setTechnos([...technos, { ...techno, technoid: uuidv4() }]);
     }
 
+    function handleDeleteTechno(id) {
+        setTechnos(technos.filter((tech) => tech.technoid !== id));
+    }
+
     return (
         <>
             <Menu />
@@ -27,7 +31,12 @@ function App() {
                 />
                 <Route
                     path="/list"
-                    element={<TechnoList technos={technos} />}
+                    element={
+                        <TechnoList
+                            technos={technos}
+                            handleDeleteTechno={handleDeleteTechno}
+                        />
+                    }
                 />
             </Routes>
         </>
