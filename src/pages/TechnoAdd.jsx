@@ -10,6 +10,11 @@ export default function TechnoAdd({ handleAddTechno }) {
     function handleSubmit(event) {
         event.preventDefault();
         handleAddTechno(techno);
+        setTechno({
+            technoname: '',
+            technocategory: '',
+            technodescription: '',
+        });
     }
 
     function handleChange(evt) {
