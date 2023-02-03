@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import useLocalStorage from './hooks/useLocalStorage.jsx';
 
 import Menu from './components/Menu.jsx';
 import Home from './pages/Home.jsx';
@@ -11,6 +12,16 @@ import './css/app.css';
 
 function App() {
     const [technos, setTechnos] = useState([]);
+    const STORAGE_KEY = 'technos';
+    const [storeTechnos, setStoreTechnos] = useLocalStorage(STORAGE_KEY, []);
+
+    useEffect(() => {
+        setTechnos(storeTechnos);
+    }, []);
+
+    useEffect(() => {
+        setStoreTechnos(technos);
+    }, [technos]);
 
     function handleAddTechno(techno) {
         setTechnos([...technos, { ...techno, technoid: uuidv4() }]);
