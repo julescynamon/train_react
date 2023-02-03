@@ -8,7 +8,7 @@ export default function TechnoList({ technos }) {
             <br />
             <div>
                 {technos.map((item) => (
-                    <TechnoItem item={item} />
+                    <TechnoItem item={item} key={item.technoid} />
                 ))}
             </div>
         </div>
