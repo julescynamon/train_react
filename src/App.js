@@ -12,8 +12,10 @@ function App() {
     const [technos, setTechnos] = useState([]);
 
     function handleAddTechno(techno) {
-        console.log('handletechno', techno);
+        setTechnos([...technos, techno]);
     }
+
+    console.log(technos);
 
     return (
         <>
